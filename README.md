@@ -13,8 +13,8 @@ A backup routine runs once a day and makes the day copy of all the files in the 
 <h3>Setup:</h3>
 
 <ul>
-<li>Setup environment variables on .env:</li>
-<li>Run composer:</li>
-<li>Setup a cronjob:</li>
+<li>Setup environment variables on .env (we have a .env.example ready to you!)</li>
+<li>Run composer: "Composer install"</li>
+<li>Setup a cronjob: the cronjob must run at least once a day in a time the machine is on. I suggest to run it every five minutes, once the script is automatically limited to run only once a day - set it up to run the script "download-routine.bash"</li>
 <li>Have Fun!</li>
 </ul>
