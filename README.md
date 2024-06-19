@@ -16,4 +16,5 @@ A backup routine runs once a day and makes the day copy of all the files in the 
 <li>Setup environment variables on .env:</li>
 <li>Run composer:</li>
 <li>Setup a cronjob:</li>
+<li>Have Fun!</li>
 </ul>
