@@ -1,7 +1,7 @@
 # s3-connection
 
 <p>
-This is a home-made solution for a problem i had: to keep a local copy of a aws s3 bucket.
+This is a home-made solution for a problem i had: to keep a local backup of a aws s3 bucket.
 </p>
 <p>
 This may be useful if your local machine is safe and you need to keep watch of what is going on in your remote environment.

@@ -78,17 +78,14 @@ class s3BucketFacade
 
                 $fileName = $object['Key'];
                 echo $fileName . "\n";
-
                 $date = date("Y-m-d");
 
                 createDirectoryIfNotExists(BACKUP_DIR);
 
                 $downloadsDir = BACKUP_DIR . "/$date";
-
                 createDirectoryIfNotExists($downloadsDir);
 
                 $localFilePath = BACKUP_DIR . "/" . $fileName;
-
                 echo "local: $localFilePath";
 
                 downloadFileFromS3($this->client, BUCKET_NAME, $fileName, $localFilePath);
