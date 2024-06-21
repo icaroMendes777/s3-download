@@ -1,10 +1,10 @@
-# s3-connection
+# s3-download
 
 <p>
 This is a home-made solution for a problem i had: to keep a local backup of a aws s3 bucket.
 </p>
 <p>
-This may be useful if your local machine is safe and you need to keep watch of what is going on in your remote environment.
+This may be useful if your local machine is safe and you need to keep watch of what is going on at your remote environment.
 </p>
 <p>
 A backup routine runs once a day and makes the day copy of all the files in the bucket. This is good also for regression once old versions of the backups are kept.
