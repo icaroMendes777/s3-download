@@ -7,13 +7,9 @@ if [ -f .env ]; then
   # Export the LOG_FILE variable from the .env file
   export $(grep -E '^LOG_FILE=' .env | xargs)
   export $(grep -E '^DESKTOP_ROOT_FILE=' .env | xargs)
-fi
-
-# Check if LOG_FILE is set and print it
-if [ -z "$LOG_FILE" ]; then
-  echo "LOG_FILE is not set."
 else
-  echo "LOG_FILE is set to: $LOG_FILE"
+  echo "No .env file set, please provide a .env file "
+  exit 1
 fi
 
 # Get today's date
@@ -32,9 +28,16 @@ fi
 # If the download wasn't done today, run the download script
 echo "Downloading bucket..."
 
-php /home/icaro/projects/s3-connection/download-bkp.php
+php "$DESKTOP_ROOT_FILE/download-bkp.php"
 
-# Log today's date to the log file
-echo "$TODAY Task completed at: $CURRENT_TIME" >> "$LOG_FILE"
+exit_status=$?
+if [ $exit_status -eq 0 ]; then
+    # Log today's date to the log file
+    echo "$TODAY Task completed at: $CURRENT_TIME" >> "$LOG_FILE"
+    echo "Task ended successfully"
+    exit 0
+else
+    echo "Something went wrong! PHP script failed to run with exit status $exit_status."
+    exit 1
+fi
 
-exit 0

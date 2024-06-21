@@ -1,7 +1,7 @@
 <?php
 
 
-require __DIR__ . '/../util/files.php';
+require_once __DIR__ . '/../util/files.php';
 
 use Aws\S3\S3Client;
 use Aws\S3\Exception\S3Exception;
@@ -16,8 +16,6 @@ define('AWS_SECRET_KEY', $_ENV['AWS_SECRET_KEY']);
 define('DESKTOP_ROOT_FILE', $_ENV['DESKTOP_ROOT_FILE']);
 define('BUCKET_NAME', $_ENV['BUCKET_NAME']);
 define('BACKUP_DIR', $_ENV['BACKUP_DIR']);
-
-
 
 // Instantiate the S3 class and point it at the desired host
 
@@ -62,7 +60,6 @@ class s3BucketFacade
         }
     }
 
-
     function downloadAllFilesInBucket()
     {
 
@@ -77,7 +74,7 @@ class s3BucketFacade
             foreach ($objects['Contents'] as $object) {
 
                 $fileName = $object['Key'];
-                echo $fileName . "\n";
+                echo $fileName . " downloading to:\n";
                 $date = date("Y-m-d");
 
                 createDirectoryIfNotExists(BACKUP_DIR);
@@ -85,8 +82,8 @@ class s3BucketFacade
                 $downloadsDir = BACKUP_DIR . "/$date";
                 createDirectoryIfNotExists($downloadsDir);
 
-                $localFilePath = BACKUP_DIR . "/" . $fileName;
-                echo "local: $localFilePath";
+                $localFilePath = $downloadsDir . "/" . $fileName;
+                echo "local: $localFilePath \n";
 
                 $this->downloadFileFromS3($fileName, $localFilePath);
             }
