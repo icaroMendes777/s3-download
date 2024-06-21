@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # Path to the log file
-#LOG_FILE="/home/icaro/projects/s3-bkp-psicologica/logs/download-runs.log"
 
 # Check if the .env file exists
 if [ -f .env ]; then
   # Export the LOG_FILE variable from the .env file
   export $(grep -E '^LOG_FILE=' .env | xargs)
+  export $(grep -E '^DESKTOP_ROOT_FILE=' .env | xargs)
 fi
 
 # Check if LOG_FILE is set and print it

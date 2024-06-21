@@ -88,7 +88,7 @@ class s3BucketFacade
                 $localFilePath = BACKUP_DIR . "/" . $fileName;
                 echo "local: $localFilePath";
 
-                downloadFileFromS3($this->client, BUCKET_NAME, $fileName, $localFilePath);
+                $this->downloadFileFromS3($fileName, $localFilePath);
             }
         } catch (AwsException $e) {
 
